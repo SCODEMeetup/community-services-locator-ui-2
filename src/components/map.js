@@ -31,7 +31,7 @@ let Map = class Map extends React.Component {
         'type': 'circle',
         'source': {
           type: 'vector',
-          url: 'mapbox://smrtcbus.9n1znhht'
+          url: 'mapbox://smrtcbus.9n1znhht'  //smrtcbus.cficgu1f
         },
         'source-layer': 'pantries-a2zfdr',
         'paint': {
@@ -45,6 +45,25 @@ let Map = class Map extends React.Component {
         'circle-color': '#fbb03b'
       }
     });
+    this.map.addLayer({
+      'id': 'stores',
+      'type': 'circle',
+      'source': {
+        type: 'vector',
+        url: 'mapbox://smrtcbus.cficgu1f'
+      },
+      'source-layer': 'Stores-0pwhm7',
+      'paint': {
+      // make circles larger as the user zooms from z12 to z22
+        'circle-radius': {
+          'base': 50,
+          'stops': [[12, 10], [22, 180]]
+      },
+      // color circles by ethnicity, using a match expression
+      // https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-match
+      'circle-color': '#e55e5e'
+    }
+  });
   });
 }
 
